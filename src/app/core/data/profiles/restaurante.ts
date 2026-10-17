@@ -1,0 +1,66 @@
+import { ProfileSeed } from '../seed-builder';
+import { week } from './week';
+
+/** Restaurante ficticio de Medellín. Todos los contactos y teléfonos son inventados. */
+export const RESTAURANTE: ProfileSeed = {
+  profileId: 'restaurante',
+  agentName: 'Daniela',
+  business: {
+    name: 'Brasa Roja',
+    type: 'Restaurante',
+    description: 'Parrilla de carnes a la brasa, picadas para compartir y cocteles en El Poblado.',
+    logoUrl: '',
+    brandColor: '#c2410c',
+    phone: '3005550142',
+    email: 'hola@brasaroja.demo',
+    address: 'Cra. 37 #8A-24, El Poblado',
+    city: 'Medellín',
+    hours: week({ lunes: ['12:00', '22:00'], martes: ['12:00', '22:00'], miercoles: ['12:00', '22:00'], jueves: ['12:00', '22:00'], viernes: ['12:00', '23:00'], sabado: ['12:00', '23:00'], domingo: ['12:00', '18:00'] }),
+  },
+  assistant: {
+    assistantName: 'Rosa',
+    tone: 'cercano',
+    welcomeMessage: '¡Hola! Soy {asistente}, la asistente virtual de {negocio}. Te puedo ayudar con el menú, precios, horarios, domicilios y reservas.',
+    farewellMessage: '¡Gracias por escribirnos! Te esperamos pronto en {negocio}.',
+    fallbackMessage: 'Perdón, no entendí bien tu mensaje. Puedo ayudarte con:',
+    handoffMessage: 'Listo, ya le aviso a una persona del equipo de {negocio} para que siga contigo por este chat. Si es urgente, llámanos al {telefono}.',
+    leadConfirmationMessage: '¡Listo, {nombre}! Registré tu pedido de {producto}. Una persona del equipo te escribirá al {telefono_cliente} para confirmar la hora y el pago.',
+    botEnabled: true,
+  },
+  faqs: [
+    { question: '¿Hacen domicilios?', keywords: ['domicilio', 'domicilios', 'envio', 'envian', 'llevan', 'a domicilio', 'rappi'], answer: 'Sí, hacemos domicilios en El Poblado, Laureles, Envigado y Sabaneta de 12:00 m. a 9:30 p. m. El costo va de $5.000 a $9.000 según la zona y el tiempo de entrega es de 40 a 60 minutos.' },
+    { question: '¿Qué métodos de pago aceptan?', keywords: ['pago', 'pagos', 'pagar', 'tarjeta', 'nequi', 'daviplata', 'efectivo', 'transferencia', 'datafono'], answer: 'Recibimos efectivo, tarjetas débito y crédito, Nequi, Daviplata y transferencia. En domicilios el repartidor lleva datáfono.' },
+    { question: '¿Hacen reservas para grupos o eventos?', keywords: ['grupo', 'grupos', 'cumpleanos', 'evento', 'eventos', 'celebracion', 'salon', 'personas'], answer: 'Sí. Para grupos de más de 8 personas tenemos el salón del segundo piso. Escríbenos la fecha y el número de personas y una persona del equipo te confirma la disponibilidad.' },
+    { question: '¿Tienen parqueadero?', keywords: ['parqueadero', 'parqueo', 'parquear', 'carro', 'estacionamiento', 'moto'], answer: 'Tenemos convenio con el parqueadero de la Cra. 37 #8A-10, a media cuadra: con tu factura las primeras dos horas son gratis.' },
+    { question: '¿Tienen opciones vegetarianas?', keywords: ['vegetariano', 'vegetariana', 'vegetarianas', 'vegano', 'vegana', 'sin carne'], answer: 'Sí: tenemos ensalada de la casa, papas a la francesa, arepas con queso y champiñones a la brasa. Avísanos si tienes alguna alergia y la cocina lo tiene en cuenta.' },
+    { question: '¿Se puede ir con mascotas?', keywords: ['mascota', 'mascotas', 'perro', 'perrito', 'gato', 'pet friendly'], answer: 'Sí, somos pet friendly en la terraza. Te llevamos agua para tu mascota.' },
+  ],
+  products: [
+    { name: 'Churrasco 300 g', description: 'Corte de res a la brasa con papa criolla y chimichurri.', price: 45000, category: 'Carnes', imageUrl: 'photos/restaurante/churrasco.webp', available: true },
+    { name: 'Costillas BBQ', description: 'Costillas de cerdo en salsa BBQ de la casa, con papas.', price: 52000, category: 'Carnes', imageUrl: 'photos/restaurante/costilla-bbq.webp', available: true },
+    { name: 'Pechuga a la brasa', description: 'Pechuga marinada con finas hierbas y ensalada.', price: 32000, category: 'Carnes', imageUrl: 'photos/restaurante/pechuga.webp', available: true },
+    { name: 'Picada para dos', description: 'Res, cerdo, chorizo, chicharrón, papa criolla y arepitas.', price: 68000, category: 'Para compartir', imageUrl: 'photos/restaurante/picada.webp', available: true },
+    { name: 'Chorizo parrillero', description: 'Dos chorizos artesanales con arepa y limón.', price: 18000, category: 'Entradas', imageUrl: 'photos/restaurante/chorizo.webp', available: true },
+    { name: 'Papas a la francesa', description: 'Porción de papas crocantes con salsa de la casa.', price: 12000, category: 'Acompañamientos', imageUrl: 'photos/restaurante/papas.webp', available: true },
+    { name: 'Limonada natural', description: 'Limonada fresca de limón mandarino.', price: 8000, category: 'Bebidas', imageUrl: 'photos/restaurante/limonada.webp', available: true },
+    { name: 'Jugo de mango', description: 'Jugo natural en agua o en leche.', price: 9000, category: 'Bebidas', imageUrl: 'photos/restaurante/mango.webp', available: true },
+    { name: 'Michelada', description: 'Cerveza nacional con limón, sal y salsas.', price: 14000, category: 'Bebidas', imageUrl: 'photos/restaurante/michelada.webp', available: true },
+    { name: 'Mojito', description: 'Ron blanco, hierbabuena, limón y soda.', price: 22000, category: 'Cocteles', imageUrl: 'photos/restaurante/mojito.webp', available: false },
+  ],
+  scripts: [
+    { name: 'Laura Restrepo', phone: '3015550101', daysAgo: 6, time: '11:20', steps: [{ c: 'Hola' }, { c: '¿A qué hora abren el domingo?' }, { c: 'Gracias' }], resolve: true },
+    { name: 'Andrés Gómez', phone: '3015550102', daysAgo: 6, time: '18:05', steps: [{ c: 'Buenas tardes, ¿hacen domicilios a Envigado?' }, { c: '¿Cuánto vale la picada para dos?' }, { c: 'Quiero pedir la picada para dos' }, { c: 'sí' }, { c: '301 456 7890' }], resolve: true, leadStatus: 'convertido', leadNote: 'Pagó con Nequi. Pidió salsa extra.' },
+    { name: 'Camila Ríos', phone: '3015550103', daysAgo: 5, time: '13:40', steps: [{ c: '¿Dónde quedan?' }, { c: '¿Tienen parqueadero?' }], resolve: true },
+    { name: 'Julián Mejía', phone: '3015550104', daysAgo: 5, time: '16:10', steps: [{ c: 'Hola, quiero celebrar un cumpleaños con 15 personas' }, { c: 'Prefiero hablar con alguien del restaurante' }, { a: 'Hola Julián, soy {agente} de Brasa Roja. Para 15 personas te podemos reservar el salón del segundo piso. ¿Qué día sería?' }, { c: 'El sábado a las 7 de la noche' }, { a: 'Listo, quedó apartado el salón para el sábado a las 7:00 p. m. Te esperamos.' }], resolve: true, tags: ['Evento'] },
+    { name: 'Valentina Ospina', phone: '3015550105', daysAgo: 4, time: '12:30', steps: [{ c: '¿Qué tienen en el menú?' }, { c: '¿El mojito cuánto cuesta?' }, { c: 'Ok, entonces quiero el churrasco' }, { c: 'Valentina Ospina' }, { c: '3127894561' }], leadStatus: 'interesado', leadNote: 'Quiere el churrasco término medio para el viernes.' },
+    { name: 'Santiago Herrera', phone: '3015550106', daysAgo: 3, time: '19:15', steps: [{ c: '¿Aceptan Nequi?' }, { c: 'Perfecto, gracias' }], resolve: true },
+    { name: 'Mariana López', phone: '3015550107', daysAgo: 2, time: '12:50', steps: [{ c: 'hola' }, { c: '¿Tienen opciones vegetarianas?' }, { c: 'y la pechuga a la brasa cuánto vale?' }] },
+    { name: 'Felipe Cardona', phone: '3015550108', daysAgo: 1, time: '10:05', steps: [{ c: '¿Me pueden ayudar con una factura electrónica?' }, { c: 'Es para la empresa, necesito que salga con el NIT' }], unread: 2, tags: ['Facturación'] },
+    { name: 'Daniela Zapata', phone: '3015550109', daysAgo: 0, time: '09:40', steps: [{ c: 'Buenas, ¿hasta qué hora atienden hoy?' }, { c: 'Quiero pedir costillas BBQ' }], unread: 1 },
+    { name: 'Tomás Arango', phone: '3015550110', daysAgo: 0, time: '10:15', steps: [{ c: 'Hola' }, { c: 'Necesito hablar con un asesor' }], unread: 1 },
+  ],
+  manualLeads: [
+    { name: 'Paola Vélez', phone: '3015550111', interest: 'Picada para dos', productName: 'Picada para dos', status: 'contactado', daysAgo: 3, source: 'Registro manual', notes: 'Llamó al restaurante para preguntar por domicilio a Sabaneta.', history: ['Registrado manualmente por el equipo.', 'Se contactó al cliente'] },
+    { name: 'Esteban Ruiz', phone: '3015550112', interest: 'Reserva para evento empresarial', status: 'descartado', daysAgo: 5, source: 'Registro manual', notes: 'Buscaba un lugar para 60 personas; el salón tiene capacidad para 30.', history: ['Registrado manualmente por el equipo.', 'Se descartó la oportunidad'] },
+  ],
+};

@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.angular/
+.vscode/
+.claude/
+.mcp.json
+*.log
+.DS_Store
+Thumbs.db
