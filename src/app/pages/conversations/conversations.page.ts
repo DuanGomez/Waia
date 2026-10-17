@@ -157,6 +157,7 @@ const INTENT_TEXT: Partial<Record<Intent, string>> = {
               </div>
               <form class="compose" (ngSubmit)="submitBox(box)">
                 <input #box class="input" autocomplete="off" maxlength="600" (input)="hasDraft.set(!!box.value.trim())"
+                  (keydown.enter)="$event.preventDefault(); submitBox(box)"
                   [placeholder]="mode() === 'cliente' ? 'Escribe como ' + c.contactName.split(' ')[0] + '…' : 'Responde como equipo de ' + business().name + '…'" aria-label="Mensaje" />
                 <button class="btn btn-green btn-icon send" type="submit" [disabled]="!hasDraft()" aria-label="Enviar mensaje"><w-icon name="send" [size]="18" /></button>
               </form>

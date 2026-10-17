@@ -149,7 +149,7 @@ const TONES: { id: Tone; label: string; sample: string }[] = [
         <section class="card tester">
           <div class="card-head"><div><h3>Prueba rápida</h3><p>Escribe una pregunta y mira qué respondería</p></div></div>
           <form class="row" (ngSubmit)="test()">
-            <input class="input" name="probe" [(ngModel)]="probe" placeholder="Ej: ¿hacen domicilios?" aria-label="Pregunta de prueba" />
+            <input class="input" name="probe" [(ngModel)]="probe" (keydown.enter)="$event.preventDefault(); probe = $any($event.target).value; test()" placeholder="Ej: ¿hacen domicilios?" aria-label="Pregunta de prueba" />
             <button class="btn btn-primary btn-icon" type="submit" [disabled]="!probe.trim()" aria-label="Probar"><w-icon name="send" [size]="17" /></button>
           </form>
           <div class="examples">@for (e of examples(); track e) { <button type="button" (click)="probe = e; test()">{{ e }}</button> }</div>
