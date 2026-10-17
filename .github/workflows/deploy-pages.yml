@@ -1,0 +1,52 @@
+# Publica la demo de Waia en GitHub Pages. Todo corre en el navegador: no hay backend ni secretos.
+# Requisito único: Settings → Pages → Build and deployment → Source: "GitHub Actions".
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - run: npm ci
+
+      # La app vive en https://<usuario>.github.io/<repo>/, así que el base href es el nombre del repo.
+      - name: Build
+        run: npm run build -- --base-href "/${{ github.event.repository.name }}/"
+
+      # GitHub Pages no conoce las rutas de Angular: 404.html = index.html permite recargar cualquier URL.
+      - name: SPA fallback
+        run: cp dist/waia/browser/index.html dist/waia/browser/404.html
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist/waia/browser
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
